@@ -1,13 +1,13 @@
 ﻿namespace System
 open System.Reflection
 
-[<assembly: AssemblyTitleAttribute("Exira.EventStore.Owin")>]
-[<assembly: AssemblyProductAttribute("Exira.EventStore.Owin")>]
-[<assembly: AssemblyDescriptionAttribute("Exira.EventStore.Owin is an OWIN middleware to keep an EventStore connection shared per application")>]
-[<assembly: AssemblyVersionAttribute("0.3.10")>]
-[<assembly: AssemblyFileVersionAttribute("0.3.10")>]
-[<assembly: AssemblyMetadataAttribute("githash","2584660d218d65d4e4db185cbf040aa427be072b")>]
+[<assembly: AssemblyTitleAttribute("Exira.CsrfValidation.Owin")>]
+[<assembly: AssemblyProductAttribute("Exira.CsrfValidation.Owin")>]
+[<assembly: AssemblyDescriptionAttribute("Exira.CsrfValidation.Owin is an OWIN middleware to prevent CSRF attacks by validating HTTP Headers and Cookies.")>]
+[<assembly: AssemblyVersionAttribute("0.1.0")>]
+[<assembly: AssemblyFileVersionAttribute("0.1.0")>]
+[<assembly: AssemblyMetadataAttribute("githash","a21c8b56f572f93f8948569221cd9ea884c92d82")>]
 do ()
 
 module internal AssemblyVersionInformation =
-    let [<Literal>] Version = "0.3.10"
+    let [<Literal>] Version = "0.1.0"
