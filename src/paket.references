@@ -1,0 +1,5 @@
+FSharp.Core
+ExtCore
+Microsoft.Owin
+Microsoft.Net.Http
+Microsoft.AspNet.WebApi.Client

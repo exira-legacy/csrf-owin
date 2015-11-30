@@ -1,0 +1,25 @@
+type project
+owners
+    exira
+authors
+    exira
+projectUrl
+    http://git.exira.com/csrf-owin/
+iconUrl
+    https://raw.githubusercontent.com/exira/csrf-owin/master/docs/files/img/logo.png
+licenseUrl
+    http://github.com/exira/csrf-owin/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2015
+tags
+    csrf owin f#
+summary
+    Exira.CsrfValidation.Owin is an OWIN middleware to prevent CSRF attacks by validating HTTP Headers and Cookies
+description
+    Exira.CsrfValidation.Owin is an OWIN middleware to prevent CSRF attacks by validating HTTP Headers and Cookies
+files
+    bin/Release/net45/Exira.CsrfValidation.Owin.* ==> lib/net45/
+    bin/Release/net452/Exira.CsrfValidation.Owin.* ==> lib/net452/
+    bin/Release/net46/Exira.CsrfValidation.Owin.* ==> lib/net46/
