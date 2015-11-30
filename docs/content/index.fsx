@@ -36,12 +36,12 @@ let registerCookieAuthentication (app: IAppBuilder) =
             CookieHttpOnly = true,
             CookieSecure = CookieSecureOption.SameAsRequest,
             SlidingExpiration = true,
-            AuthenticationType = webConfig.Web.Authentication.AuthenticationName,
-            CookieName = webConfig.Web.Authentication.CookieName,
-            CookiePath = webConfig.Web.Authentication.CookiePath)
+            AuthenticationType = "example",
+            CookieName = "auth",
+            CookiePath = "/")
 
     if webConfig.Debug.Authentication.UseCookieDomain then
-        cookieOptions.CookieDomain <- webConfig.Web.Authentication.CookieDomain
+        cookieOptions.CookieDomain <- ".example.org"
 
     let csrfOptions = CsrfValidationOptions()
 
@@ -58,19 +58,20 @@ let csrf = CsrfValidationHelpers.BuildCsrfClaim()
 let claims = claims @ [csrf]
 let response = controller.Request.CreateResponse(HttpStatusCode.OK, "OK")
 
+let path = "/"
 let domain =
-    if webConfig.Debug.Authentication.UseCookieDomain then Some webConfig.Web.Authentication.CookieDomain
+    if webConfig.Debug.Authentication.UseCookieDomain then Some ".example.org"
     else None
 
-CsrfValidationHelpers.WriteCsrfCookie response csrf webConfig.Web.Authentication.CookiePath domain
-controller.Request.GetOwinContext().Authentication.SignIn(new ClaimsIdentity(claims, webConfig.Web.Authentication.AuthenticationName))
+CsrfValidationHelpers.WriteCsrfCookie response csrf path domain
+controller.Request.GetOwinContext().Authentication.SignIn(new ClaimsIdentity(claims, "example"))
 
 response
 (**
 
 ### Cloning
 
-```git clone git@github.com:exira/csrf-owin.git -c core.autocrlf=input```
+`git clone git@github.com:exira/csrf-owin.git -c core.autocrlf=input`
 
 ### Contributing and copyright
 
