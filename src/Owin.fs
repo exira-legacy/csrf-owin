@@ -15,14 +15,7 @@ module CsrfValidation =
     open System.Linq
     open System.Text.RegularExpressions
 
-    let private excludedPaths =
-        [
-            "/users/"
-            "/users/.*/login"
-            "/users/.*/verify"
-            "/users/.*/requestpasswordreset"
-            "/users/.*/verifypasswordreset"
-        ]
+    let private excludedPaths = [ "" ]
 
     let [<Literal>] private CsrfHeader = "X-CSRF"
     let [<Literal>] private CsrfClaimType = "csrf"
@@ -54,7 +47,6 @@ module CsrfValidation =
     type CsrfValidationOptions() =
         member val ExcludedPaths = excludedPaths with get, set
         member val CsrfHeader = CsrfHeader with get, set
-        member val CsrfClaimType = CsrfClaimType with get, set
 
     type CsrfValidationMiddleware(next: Func<IDictionary<string, obj>, Task>, options: CsrfValidationOptions) =
         let awaitTask = Async.AwaitIAsyncResult >> Async.Ignore
@@ -69,7 +61,7 @@ module CsrfValidation =
             dict
 
         let findCsrfClaim (principal: ClaimsPrincipal) =
-            match principal.FindFirst options.CsrfClaimType with
+            match principal.FindFirst CsrfClaimType with
             | null -> None
             | claim -> Some claim.Value
 

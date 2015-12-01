@@ -43,7 +43,13 @@ let registerCookieAuthentication (app: IAppBuilder) =
     if webConfig.Debug.Authentication.UseCookieDomain then
         cookieOptions.CookieDomain <- ".example.org"
 
-    let csrfOptions = CsrfValidationOptions()
+    let csrfOptions =
+        CsrfValidationOptions(
+            ExcludedPaths =
+                [
+                    "/users/"
+                    "/users/.*/login"
+                ])
 
     app.UseCookieAuthentication cookieOptions |> ignore
     app.UseCsrfValidation csrfOptions |> ignore
