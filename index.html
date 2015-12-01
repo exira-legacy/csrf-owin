@@ -74,6 +74,12 @@
 <span class="l">18: </span>
 <span class="l">19: </span>
 <span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+<span class="l">23: </span>
+<span class="l">24: </span>
+<span class="l">25: </span>
+<span class="l">26: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span class="i">Exira</span><span class="o">.</span><span class="i">CsrfValidation</span><span class="o">.</span><span class="i">Owin</span>
 
@@ -91,7 +97,13 @@
     <span class="k">if</span> <span class="i">webConfig</span><span class="o">.</span><span class="i">Debug</span><span class="o">.</span><span class="i">Authentication</span><span class="o">.</span><span class="i">UseCookieDomain</span> <span class="k">then</span>
         <span onmouseout="hideTip(event, 'fs3', 4)" onmouseover="showTip(event, 'fs3', 4)" class="i">cookieOptions</span><span class="o">.</span><span class="i">CookieDomain</span> <span class="o">&lt;-</span> <span class="s">&quot;.example.org&quot;</span>
 
-    <span class="k">let</span> <span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="i">csrfOptions</span> <span class="o">=</span> <span class="i">CsrfValidationOptions</span>()
+    <span class="k">let</span> <span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="i">csrfOptions</span> <span class="o">=</span>
+        <span class="i">CsrfValidationOptions</span>(
+            <span class="i">ExcludedPaths</span> <span class="o">=</span>
+                [
+                    <span class="s">&quot;/users/&quot;</span>
+                    <span class="s">&quot;/users/.*/login&quot;</span>
+                ])
 
     <span onmouseout="hideTip(event, 'fs2', 6)" onmouseover="showTip(event, 'fs2', 6)" class="i">app</span><span class="o">.</span><span class="i">UseCookieAuthentication</span> <span onmouseout="hideTip(event, 'fs3', 7)" onmouseover="showTip(event, 'fs3', 7)" class="i">cookieOptions</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs5', 8)" onmouseover="showTip(event, 'fs5', 8)" class="f">ignore</span>
     <span onmouseout="hideTip(event, 'fs2', 9)" onmouseover="showTip(event, 'fs2', 9)" class="i">app</span><span class="o">.</span><span class="i">UseCsrfValidation</span> <span onmouseout="hideTip(event, 'fs4', 10)" onmouseover="showTip(event, 'fs4', 10)" class="i">csrfOptions</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs5', 11)" onmouseover="showTip(event, 'fs5', 11)" class="f">ignore</span>
