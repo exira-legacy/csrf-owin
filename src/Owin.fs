@@ -52,7 +52,7 @@ module CsrfValidation =
         let awaitTask = Async.AwaitIAsyncResult >> Async.Ignore
 
         let excludedPathsRegex =
-            excludedPaths
+            options.ExcludedPaths
             |> List.map (fun excludedPath -> sprintf "^%s$" excludedPath)
             |> List.map (fun excludedPath -> Regex(excludedPath, RegexOptions.Compiled))
 
