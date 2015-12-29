@@ -23,3 +23,4 @@ files
     bin/Release/net45/Exira.CsrfValidation.Owin.* ==> lib/net45/
     bin/Release/net452/Exira.CsrfValidation.Owin.* ==> lib/net452/
     bin/Release/net46/Exira.CsrfValidation.Owin.* ==> lib/net46/
+    bin/Release/net461/Exira.CsrfValidation.Owin.* ==> lib/net461/
